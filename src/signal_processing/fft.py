@@ -11,14 +11,14 @@ def fft(vec):
         return [vec[0]]
     evens = []
     odds = []
-    output = [0]*N
+    output = []
     fftEvens = fft(vec[::2])
     fftOdds = fft(vec[1::2])
     for k in range(0, N // 2):
         exp = cmplx.Complex(np.cos(-2 * np.pi * k / N), np.sin(-2 * np.pi * k / N))
         product = exp.mult(fftOdds[k])
-        output[k] = fftEvens[k].add(product)
-        output[k + N // 2] = fftEvens[k].sub(product)
+        output.append(fftEvens[k].add(product))
+        output.append(fftEvens[k].sub(product))
     return output
 
 def ifft(vec):
@@ -43,6 +43,12 @@ def ifft(vec):
         output[k] = fftEvens[k].sub(product)
         output[k + N / 2] = fftEvens[k].add(product)
     return output
+
+def fft_mat(mat):
+    out = []
+    for vec in mat:
+        out.append(fft(vec))
+    return out
 
 def matrixToCSV(mat, outputDir):
     f = open(outputDir+".csv", 'w')

@@ -9,10 +9,14 @@ path = "C:/Users/brian/Documents/Smasheo/Audio/King Dedede Sounds/dededehit.wav"
 
 data = read.wav_to_vec(path)
 
-mat = fmt.vec_to_mat(data, 3)
+mat = fmt.vec_to_mat(data, 128)
 
 cmplx_mat = mapping.real_to_cmplx_obj_mat(mat)
 
-print(cmplx_mat)
+fft_mat = fft.fft_mat(cmplx_mat)
+
+# for row in fft_mat:
+#     for elem in row:
+#         print(elem)
 
 # transform = fft.fft(data, 256)
