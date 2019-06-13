@@ -21,6 +21,6 @@ cmplx_mat = mapping.real_to_cmplx_obj_mat(mat)
 fft_mat = fft.fft_mat(cmplx_mat)
 
 for row in fft_mat:
-    print(anlyz.get_max_intensity_cmplx_vec(row), anlyz.get_min_intensity_cmplx_vec(row) )
+    print(anlyz.get_signal_magnitude_similarity(row, row, 1.0))
 
 # transform = fft.fft(data, 256)
