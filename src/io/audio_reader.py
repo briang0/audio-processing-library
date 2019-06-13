@@ -28,6 +28,4 @@ def wav_to_vec(path):
     bytes = c_array.tolist()
     audio.close()
 
-    print(bytes)
-
     return bytes

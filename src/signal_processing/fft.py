@@ -1,4 +1,6 @@
-from math import Complex as cmplx
+import os, sys
+sys.path.insert(0, os.path.abspath(".."))
+import src.math.Complex as cmplx
 import numpy as np
 
 max16bit = 32768
@@ -41,7 +43,7 @@ def ifft(vec):
         output[k] = fftEvens[k].sub(product)
         output[k + N / 2] = fftEvens[k].add(product)
     return output
-    
+
 def matrixToCSV(mat, outputDir):
     f = open(outputDir+".csv", 'w')
     mag = open(outputDir + "mag.csv", 'w')
