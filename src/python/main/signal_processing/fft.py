@@ -38,25 +38,15 @@ def fft_cmplx(vec):
 
 def ifft(vec):
     N = len(vec)
+    output = vec.copy()
 
-    if N == 1:
-        return [vec[0]]
+    for i in range(0, N):
+        output[i] = vec[i].conj()
+    output = fft(output)
 
-    evens = []
-    odds = []
-    output = [0]*N
-    for k in range(0, N/2):
-        evens.append(vec[2 * k])
-        odds.append(vec[2 * k + 1])
+    for i in range(0, N):
+        output[i] = output[i].conj().scale(1 / N)
 
-    fftEvens = fft(evens)
-    fftOdds = fft(odds)
-    for k in range(0, N/2):
-        exp = cmplx.complex_num(np.cos(-2 * np.pi * k / N), np.sin(-2 * np.pi * k / N))
-        product = exp.mult(fftOdds[k])
-        product = product.scale(float(1)/float(N))
-        output[k] = fftEvens[k].sub(product)
-        output[k + N / 2] = fftEvens[k].add(product)
     return output
 
 def fft_mat(mat):
