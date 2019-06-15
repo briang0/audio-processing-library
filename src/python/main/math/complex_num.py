@@ -43,3 +43,6 @@ class complex_num:
 
     def __str__(self):
         return str(self.real) + " + " + str(self.imag) + "i"
+
+    def __eq__(self, other):
+        return ((self.real == other.real) and (self.imag == other.imag))

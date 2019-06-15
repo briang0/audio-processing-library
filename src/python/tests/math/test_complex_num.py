@@ -107,7 +107,6 @@ class complex_num_tests(unittest.TestCase):
         num4 = cmplx.complex_num(1003, -12)
         num1 = num1.mult(num2).sub(num3).add(num4.conj())
         actual = [num1.real, num1.imag]
-        print(actual)
         assert expected == actual, "Assertion error in test_comprehensive"
 
 
