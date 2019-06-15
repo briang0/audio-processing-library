@@ -2,11 +2,11 @@
 
 import os, sys
 sys.path.insert(0, os.path.abspath("../.."))
-import src.io.audio_reader as read
-import src.signal_processing.fft as fft
-import src.signal_processing.analyzation as anlyz
-import src.util.format as fmt
-import src.util.mapping as mapping
+import main.io.audio_reader as read
+import main.signal_processing.fft as fft
+import main.signal_processing.analyzation as anlyz
+import main.util.format as fmt
+import main.util.mapping as mapping
 
 path = "C:/Users/brian/Documents/Smasheo/Audio/King Dedede Sounds/dededehit.wav"
 
