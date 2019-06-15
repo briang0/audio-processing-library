@@ -28,7 +28,8 @@ class fft_test(unittest.TestCase):
         expected = ru.get_random_complex_vec(N, -100, 100)
         actualTemp = fft.fft(expected)
         actual = fft.ifft(actualTemp)
-        assert actual == expected, "FFT and IFFT output not the same"
+        for i in range(0, len(expected)):
+            assert expected[i].round() == actual[i].round(), "Expected value did no match actual"
         assert len(actual) == N, "Resulting vector length did not match expected size"
         assert actualTemp is not expected, "IFFT resulting vector is equal to the FFT resulting vector"
 

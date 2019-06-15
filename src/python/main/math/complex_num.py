@@ -35,6 +35,11 @@ class complex_num:
         imag1 = abs(self.imag)
         return complex_num(real1, imag1)
 
+    def round(self):
+        real1 = round(self.real)
+        imag1 = round(self.imag)
+        return complex_num(real1, imag1)
+
     def scale(self, scalar):
         return complex_num(self.real * scalar, self.imag * scalar)
 
