@@ -1,12 +1,12 @@
 #This class is for testing. It won't be a part of the api
 
 import os, sys
-sys.path.insert(0, os.path.abspath("../.."))
-import main.io.audio_reader as read
-import main.signal_processing.fft as fft
-import main.signal_processing.analyzation as anlyz
-import main.util.format as fmt
-import main.util.mapping as mapping
+sys.path.insert(0, os.path.abspath("../../.."))
+import python.main.io.audio_reader as read
+import python.main.signal_processing.fft as fft
+import python.main.signal_processing.analyzation as anlyz
+import python.main.util.format as fmt
+import python.main.util.mapping as mapping
 
 path = "C:/Users/brian/Documents/Smasheo/Audio/King Dedede Sounds/dededehit.wav"
 
