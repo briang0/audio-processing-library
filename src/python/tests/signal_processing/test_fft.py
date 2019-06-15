@@ -24,8 +24,8 @@ class fft_test(unittest.TestCase):
         assert expected == actual, "Assertion error in fft_test_1"
 
     def test_fft_ifft_random(self):
-        N = 4096
-        expected = ru.get_random_complex_vec(N, -2147483647, 2147483647)
+        N = 32
+        expected = ru.get_random_complex_vec(N, -100, 100)
         actualTemp = fft.fft(expected)
         actual = fft.ifft(actualTemp)
         assert actual == expected, "FFT and IFFT output not the same"

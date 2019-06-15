@@ -54,20 +54,3 @@ def fft_mat(mat):
     for vec in mat:
         out.append(fft(vec))
     return out
-
-def matrixToCSV(mat, outputDir):
-    f = open(outputDir+".csv", 'w')
-    mag = open(outputDir + "mag.csv", 'w')
-    db = open(outputDir + "db.csv", "w")
-    for i in range(0, len(mat)):
-        for j in range(0, len(mat[i])):
-            f.write(str(mat[i][j]) + ", ")
-            real = mat[i][j].real
-            imag = mat[i][j].imag
-            magnitude = np.sqrt(real * real + imag * imag)
-            intensity = getIntensity(mat[i][j], 256)
-            mag.write(str(magnitude) + ", ")
-            db.write(str(intensity) +  ", ")
-        f.write("\n")
-        mag.write("\n")
-        db.write("\n")

@@ -90,4 +90,26 @@ def check_if_intensity_subset(signal1, signal2):
         if (intensity2 >= intensity1):
             return False
 
-    return True
+def get_signal_difference(signal1, signal2):
+    len1 = len(signal1)
+    len2 = len(signal2)
+    if (len1 is not len2):
+        return None
+        #TODO throw an excpetion
+    output = []
+    for i in range(0, len1):
+        output.append(signal1[i].sub(signal2[i]))
+    return output
+
+def get_signal_intensity_difference(signal1, signal2):
+    len1 = len(signal1)
+    len2 = len(signal2)
+    if (len1 is not len2):
+        return None
+        #TODO throw an excpetion
+    output = []
+    for i in range(0, len1):
+        intensity1 = get_intensity(signal1[i], len1)
+        intensity2 = get_intensity(signal2[i], len2)
+        output.append(intensity1 - intensity2)
+    return output
