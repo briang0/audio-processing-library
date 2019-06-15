@@ -31,22 +31,15 @@ class complex_num:
         return complex_num(real1, imag1)
 
     def abs(self, c):
-        real1 = abs(real)
-        iamg1 = abs(imag)
-        return complex_num(real, imag)
+        real1 = abs(self.real)
+        imag1 = abs(self.imag)
+        return complex_num(real1, imag1)
 
     def scale(self, scalar):
         return complex_num(self.real * scalar, self.imag * scalar)
 
-    def getPhase(self):
-        real = self.real
-        imag = self.imag
-        return np.arctan2(imag, real)
-
-    def getConj(self):
-        real = self.real
-        imag = -1 * self.imag
-        return complex_num(real, imag)
+    def conj(self):
+        return complex_num(self.real, -1 * self.imag)
 
     def __str__(self):
         return str(self.real) + " + " + str(self.imag) + "i"
