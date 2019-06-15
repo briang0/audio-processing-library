@@ -10,17 +10,29 @@ import main.util.mapping as mapping
 
 path = "C:/Users/brian/Documents/Smasheo/Audio/King Dedede Sounds/dededehit.wav"
 
-fft_size = 128
+# fft_size = 128
+#
+# data = read.wav_to_vec(path)
+#
+# mat = fmt.vec_to_mat(data, fft_size)
+#
+# cmplx_mat = mapping.real_to_cmplx_obj_mat(mat)
+#
+# fft_mat = fft.fft_mat(cmplx_mat)
+#
+# for row in fft_mat:
+#     print(anlyz.get_signal_magnitude_similarity(row, row, 1.0))
 
-data = read.wav_to_vec(path)
+dat = [1, 2, 3, 4, 5, 6, 7, 8]
 
-mat = fmt.vec_to_mat(data, fft_size)
+dat_cmplx = mapping.real_to_cmplx_obj_vec(dat)
 
-cmplx_mat = mapping.real_to_cmplx_obj_mat(mat)
+for num in dat_cmplx:
+    print(num)
 
-fft_mat = fft.fft_mat(cmplx_mat)
+dat_fft = fft.fft(dat_cmplx)
 
-for row in fft_mat:
-    print(anlyz.get_signal_magnitude_similarity(row, row, 1.0))
+for num in dat_fft:
+    print(num)
 
 # transform = fft.fft(data, 256)

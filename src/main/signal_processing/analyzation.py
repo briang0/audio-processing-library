@@ -1,6 +1,6 @@
 import os, sys
 sys.path.insert(0, os.path.abspath("../.."))
-import main.math.Complex as cmplx
+import main.math.complex_num as cmplx
 import numpy as np
 
 max16bit = 32768

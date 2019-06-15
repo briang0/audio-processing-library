@@ -1,6 +1,6 @@
 import numpy as np
 
-class Complex:
+class complex_num:
     real = 0.0
     imag = 0.0
 
@@ -18,25 +18,25 @@ class Complex:
     def add(self, c):
         real1 = self.real + c.real
         imag1 = self.imag + c.imag
-        return Complex(real1, imag1)
+        return complex_num(real1, imag1)
 
     def sub(self, c):
         real1 = self.real - c.real
         imag1 = self.imag - c.imag
-        return Complex(real1, imag1)
+        return complex_num(real1, imag1)
 
     def mult(self, c):
         real1 = self.real * c.real - self.imag * c.imag
         imag1 = self.real * c.imag + self.imag * c.real
-        return Complex(real1, imag1)
+        return complex_num(real1, imag1)
 
     def abs(self, c):
         real1 = abs(real)
         iamg1 = abs(imag)
-        return Complex(real, imag)
+        return complex_num(real, imag)
 
     def scale(self, scalar):
-        return Complex(self.real * scalar, self.imag * scalar)
+        return complex_num(self.real * scalar, self.imag * scalar)
 
     def getPhase(self):
         real = self.real
@@ -46,7 +46,7 @@ class Complex:
     def getConj(self):
         real = self.real
         imag = -1 * self.imag
-        return Complex(real, imag)
+        return complex_num(real, imag)
 
     def __str__(self):
         return str(self.real) + " + " + str(self.imag) + "i"
