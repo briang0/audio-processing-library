@@ -1,12 +1,15 @@
 import os, sys
 sys.path.insert(0, os.path.abspath(".."))
 import python.main.math.complex_num as cmplx
+import python.main.util.math_util as mutil
 import numpy as np
 
 max16bit = 32768
 
 def fft(vec):
     N = len(vec)
+    if mutil.is_power_of_2(N) == False:
+        raise Exception("Input vector's length is not a power of two.")
     return fft_cmplx(vec)
 
 def fft_cmplx(vec):

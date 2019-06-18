@@ -10,7 +10,7 @@ def get_magnitude(complex):
     imag = complex.imag
     return np.sqrt(real * real + imag * imag)
 
-def get_intensity(complex, FFTSize):
+def get_intensity(complex):
     magnitude = get_magnitude(complex)
     intensity = 20 * np.log10(magnitude/(max16bit))
     return np.abs(intensity)
@@ -21,18 +21,18 @@ def bin_to_hz(bin, fft_size, sample_rate):
 
 def get_max_intensity_cmplx_vec(vec):
     fft_size = len(vec)
-    max = get_intensity(vec[0], fft_size)
+    max = get_intensity(vec[0])
     for num in vec:
-        cur_intensity = get_intensity(num, fft_size)
+        cur_intensity = get_intensity(num)
         if (cur_intensity > max):
             max = cur_intensity
     return max
 
 def get_min_intensity_cmplx_vec(vec):
     fft_size = len(vec)
-    min = get_intensity(vec[0], fft_size)
+    min = get_intensity(vec[0])
     for num in vec:
-        cur_intensity = get_intensity(num, fft_size)
+        cur_intensity = get_intensity(num)
         if (cur_intensity < min):
             min = cur_intensity
     return min
@@ -46,8 +46,8 @@ def get_signal_intensity_similarity(signal1, signal2, tolerance):
         return
 
     for i in range(0, len1):
-        intensity1 = get_intensity(signal1[i], len1)
-        intensity2 = get_intensity(signal2[i], len2)
+        intensity1 = get_intensity(signal1[i])
+        intensity2 = get_intensity(signal2[i])
         dif = intensity1 - intensity2
         abs_dif = np.abs(dif)
         if (abs_dif <= tolerance):
@@ -85,8 +85,8 @@ def check_if_intensity_subset(signal1, signal2):
         return False
 
     for i in range(0, len1):
-        intensity1 = get_intensity(signal1[i], len1)
-        intensity2 = get_intensity(signal2[i], len2)
+        intensity1 = get_intensity(signal1[i])
+        intensity2 = get_intensity(signal2[i])
         if (intensity2 >= intensity1):
             return False
 
@@ -109,7 +109,7 @@ def get_signal_intensity_difference(signal1, signal2):
         #TODO throw an excpetion
     output = []
     for i in range(0, len1):
-        intensity1 = get_intensity(signal1[i], len1)
-        intensity2 = get_intensity(signal2[i], len2)
+        intensity1 = get_intensity(signal1[i])
+        intensity2 = get_intensity(signal2[i])
         output.append(intensity1 - intensity2)
     return output
