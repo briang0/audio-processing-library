@@ -20,7 +20,7 @@ def vec_to_mat(vec, cols):
 def string_to_complex_num(num):
     parts = num.split("+")
     real = float(parts[0])
-    imag = parts[1]
+    imag = parts[1].lstrip()
     imag = imag.replace("i", "")
-    iamg = float(imag)
+    imag = float(imag)
     return cmplx.complex_num(real, imag)

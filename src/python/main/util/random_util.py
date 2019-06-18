@@ -11,6 +11,6 @@ def get_random_complex_vec(n, low, high):
     return output
 
 def get_random_complex(low, high):
-    r1 = random.randint(low, high)
-    r2 = random.randint(low, high)
+    r1 = float(random.randint(low, high))
+    r2 = float(random.randint(low, high))
     return cmplx.complex_num(r1, r2)
