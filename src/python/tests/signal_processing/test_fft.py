@@ -12,7 +12,6 @@ class fft_test(unittest.TestCase):
         num1 = cmplx.complex_num(1, 0)
         num2 = cmplx.complex_num(2, 0)
         actual = fft.fft([num1, num2])
-        print(expected, actual)
         assert expected == actual, "Assertion error in fft_test_1"
 
     def test_ifft_1(self):
@@ -34,4 +33,5 @@ class fft_test(unittest.TestCase):
         assert actualTemp is not expected, "IFFT resulting vector is equal to the FFT resulting vector"
 
 if __name__ == "__main__":
+    print("test_fft")
     unittest.main()

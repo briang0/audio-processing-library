@@ -16,4 +16,5 @@ def read_cmplx_matrix_from_csv(outputDir):
             cmplx_str = elems[j]
             num = fmt.string_to_complex_num(cmplx_str)
             output[i].append(num)
+    f.close()
     return output

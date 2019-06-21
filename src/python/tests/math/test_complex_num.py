@@ -111,4 +111,5 @@ class complex_num_tests(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    print("test_complex_num")
     unittest.main()

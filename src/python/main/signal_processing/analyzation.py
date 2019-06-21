@@ -5,19 +5,22 @@ import numpy as np
 
 max16bit = 32768
 
-def get_magnitude(complex):
+def get_sum_of_cmplx_comp_squares(complex):
     real = complex.real
     imag = complex.imag
-    return np.sqrt(real * real + imag * imag)
+    return real * real + imag * imag
+
+def get_magnitude(complex):
+    return np.sqrt(get_sum_of_cmplx_comp_squares(complex))
 
 def get_intensity(complex):
-    magnitude = get_magnitude(complex)
-    intensity = 20 * np.log10(magnitude/(max16bit))
+    val = get_sum_of_cmplx_comp_squares(complex)
+    intensity = 20 * np.log10(val)
     return np.abs(intensity)
 
 def bin_to_hz(bin, fft_size, sample_rate):
     step = sample_rate / fft_size
-    return bin * step
+    return np.round(bin * step)
 
 def get_max_intensity_cmplx_vec(vec):
     fft_size = len(vec)
@@ -49,8 +52,10 @@ def get_signal_intensity_similarity(signal1, signal2, tolerance):
         intensity1 = get_intensity(signal1[i])
         intensity2 = get_intensity(signal2[i])
         dif = intensity1 - intensity2
-        abs_dif = np.abs(dif)
-        if (abs_dif <= tolerance):
+        if intensity2 > intensity1:
+            dif = intensity2 - intensity1
+
+        if (dif <= tolerance):
             num_similar += 1
 
     similarity = num_similar / len1

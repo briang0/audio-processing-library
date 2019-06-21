@@ -34,4 +34,5 @@ class test_format(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    print("test_reader")
     unittest.main()

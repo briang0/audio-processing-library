@@ -8,3 +8,4 @@ def write_cmplx_matrix_to_csv(mat, outputDir):
         for j in range(0, len(mat[i])):
             f.write(str(mat[i][j]) + ",")
         f.write("\n")
+    f.close()
