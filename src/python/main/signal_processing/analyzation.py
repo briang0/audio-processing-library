@@ -1,6 +1,7 @@
 import os, sys
 sys.path.insert(0, os.path.abspath("../.."))
 import python.main.math.complex_num as cmplx
+from python.main.util.exceptions import VectorLengthMismatchException
 import numpy as np
 
 max16bit = 32768
@@ -45,7 +46,8 @@ def get_signal_intensity_similarity(signal1, signal2, tolerance):
     len2 = len(signal2)
     num_similar = 0
     if (len1 is not len2):
-        raise Exception("The length of the two signals are not the same")
+        msg = "Signal 1 lenght =", len1, "Signal 2 length =", len2
+        raise VectorLengthMismatchException(msg)
         return
 
     for i in range(0, len1):

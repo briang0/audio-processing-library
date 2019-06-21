@@ -4,6 +4,7 @@ import python.main.math.complex_num as cmplx
 import python.main.signal_processing.analyzation as anlyz
 import python.main.util.random_util as ru
 import python.main.util.mapping as map
+from python.main.util.exceptions import VectorLengthMismatchException
 import numpy as np
 import unittest
 
@@ -147,6 +148,20 @@ class fft_test(unittest.TestCase):
         expected = 1.0
         actual = anlyz.get_signal_intensity_similarity(cmplx_vec1, cmplx_vec2, tolerance)
         assert actual == expected, ""
+
+    def test_get_signal_intensity_similarity_5(self):
+        vec1 = [2, 10, 15, 20, 4]
+        vec2 = [7, 8, 17, 22]
+        cmplx_vec1 = map.real_to_cmplx_obj_vec(vec1)
+        cmplx_vec2 = map.real_to_cmplx_obj_vec(vec2)
+        tolerance = anlyz.get_intensity(cmplx.complex_num(2,0)) / 2
+        raised = None
+        try:
+            anlyz.get_signal_intensity_similarity(cmplx_vec1, cmplx_vec2, tolerance)
+        except VectorLengthMismatchException as e:
+            raised = e
+        if not raised:
+            self.fail("Exception not thrown for vector length mismatch")
 
 if __name__ == "__main__":
     unittest.main()
