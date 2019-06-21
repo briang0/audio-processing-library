@@ -9,7 +9,12 @@ max16bit = 32768
 def fft(vec):
     N = len(vec)
     if mutil.is_power_of_2(N) == False:
-        raise Exception("Input vector's length is not a power of two.")
+        next_pow = mutil.next_power_of_2(N)
+        zeros = next_pow - N
+        pad = [cmplx.complex_num(0, 0)] * zeros
+        print(zeros)
+        vec.extend(pad)
+
     return fft_cmplx(vec)
 
 def fft_cmplx(vec):

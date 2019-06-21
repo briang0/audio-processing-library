@@ -14,6 +14,18 @@ class fft_test(unittest.TestCase):
         actual = fft.fft([num1, num2])
         assert expected == actual, "Assertion error in fft_test_1"
 
+    def test_fft_2(self):
+        expected = [cmplx.complex_num(6, 0), cmplx.complex_num(-2, -2), cmplx.complex_num(2, 0), cmplx.complex_num(-2, 2)]
+        num1 = cmplx.complex_num(1, 0)
+        num2 = cmplx.complex_num(2, 0)
+        num3 = cmplx.complex_num(3, 0)
+        actual = fft.fft([num1, num2, num3])
+        for i in range(0, len(actual)):
+            actual[i] = actual[i].round()
+        print(actual[0], actual[1], actual[2])
+        assert expected == actual, "Assertion error in fft_test_1"
+
+
     def test_ifft_1(self):
         expected = [cmplx.complex_num(1, 0), cmplx.complex_num(2, 0)]
         num1 = cmplx.complex_num(1, 0)
