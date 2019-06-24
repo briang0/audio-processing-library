@@ -1,6 +1,12 @@
 #!/bin/sh
 for f in */ ; do
   cd $f
-  python -m unittest discover
+  if [[ $f != *pycache* ]] ;
+  then
+    for s in $f ; do
+      echo $s
+      python -m unittest *.py
+    done
+  fi
   cd ..
 done

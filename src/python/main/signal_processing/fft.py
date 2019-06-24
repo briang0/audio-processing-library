@@ -56,9 +56,3 @@ def ifft(vec):
         output[i] = output[i].conj().scale(1 / N)
 
     return output
-
-def fft_mat(mat):
-    out = []
-    for vec in mat:
-        out.append(fft(vec))
-    return out

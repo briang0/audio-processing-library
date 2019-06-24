@@ -36,15 +36,11 @@
 #4) call src.python.main.signal_processing.fft.fft_mat(raw audio data) this is the step that turns your audio data into
 #   something that's actually useful.
 #
-#FFT Matrix Structure
+#FFT Vector Structure
 #
-#   2-dimensional list
+#A vector of complex numbers. It no longer requires an input array that has a power of 2 length. However, the output will be a power of 2.
 #
-#                audio samples
-#            --------
-#           |complex_num, complex_num, ...
-#  N (bins) |complex_num, ...,
-#           |...,
+#There is no current function to convert the FFT to the time domain...
 #
 #complex_num Structure
 # * see python.main.math.complex_num and python.tests.math.test_complex_num
