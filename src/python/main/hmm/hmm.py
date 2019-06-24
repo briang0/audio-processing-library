@@ -1,3 +1,6 @@
+import os, sys
+sys.path.insert(0, os.path.abspath(".."))
+import python.main.util.matrix_util as matutil
 
 def forward(A, B, pi, O):
     N = len(A)
@@ -22,4 +25,9 @@ def forward_backward(A, B, pi, O):
         beta[i] = [0] * T
         beta[i][T - 1] = 1
 
-    #TODO
+    for t in range(T-2, 0, -1):
+        for j in range(0, N):
+            for i in range(0, N):
+                beta[j][t] += beta[j][t + 1] * A[j][i] * B[i][O[t + 1]]
+
+    return beta
