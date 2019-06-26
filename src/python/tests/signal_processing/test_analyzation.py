@@ -163,5 +163,65 @@ class fft_test(unittest.TestCase):
         if not raised:
             self.fail("Exception not thrown for vector length mismatch")
 
+    def test_get_signal_magnitude_similarity_1(self):
+        vec1 = [1, 2, 83, 4, 7, 7, 7, 9]
+        vec2 = [1, 2, 21, 4, 3, 3, 3, 9]
+        cmplx_vec1 = map.real_to_cmplx_obj_vec(vec1)
+        cmplx_vec2 = map.real_to_cmplx_obj_vec(vec2)
+        tolerance = 0
+        expected = 0.5
+        actual = anlyz.get_signal_magnitude_similarity(cmplx_vec1, cmplx_vec2, tolerance)
+        assert actual == expected, ""
+
+    def test_get_signal_magnitude_similarity_2(self):
+        vec1 = [1, 2, 83, 4, 7, 7, 7, 9]
+        vec2 = [1, 2, 21, 4, 3, 7, 3, 9]
+        cmplx_vec1 = map.real_to_cmplx_obj_vec(vec1)
+        cmplx_vec2 = map.real_to_cmplx_obj_vec(vec2)
+        tolerance = 0
+        expected = 5 / 8
+        actual = anlyz.get_signal_magnitude_similarity(cmplx_vec1, cmplx_vec2, tolerance)
+        assert actual == expected, ""
+
+    def test_get_signal_magnitude_similarity_3(self):
+        vec1 = [1, 2, 3, 4]
+        vec2 = [4.01, 4, 6, 7]
+        cmplx_vec1 = map.real_to_cmplx_obj_vec(vec1)
+        cmplx_vec2 = map.real_to_cmplx_obj_vec(vec2)
+        tolerance = 0
+        expected = 0
+        actual = anlyz.get_signal_magnitude_similarity(cmplx_vec1, cmplx_vec2, tolerance)
+        assert actual == expected, ""
+
+    def test_check_if_intensity_subset_1(self):
+        vec1 = [5, 5, 10, 10]
+        vec2 = [5, 4, 9, 10]
+        expected = True
+        actual = anlyz.check_if_intensity_subset(vec1, vec2)
+        assert actual == expected, "test_check_if_intensity_subset_1"
+
+    def test_check_if_intensity_subset_2(self):
+        vec1 = [5, 5, 10, 10]
+        vec2 = [6, 4, 9, 1]
+        expected = False
+        actual = anlyz.check_if_intensity_subset(vec1, vec2)
+        assert actual == expected, "test_check_if_intensity_subset_2"
+
+    def test_check_if_intensity_subset_3(self):
+        vec1 = [5, 5, 10, 10]
+        vec2 = [5, 5, 10, 10]
+        expected = True
+        actual = anlyz.check_if_intensity_subset(vec1, vec2)
+        assert actual == expected, "test_check_if_intensity_subset_3"
+
+    def test_get_signal_difference_1(self):
+        vec1 = [cmplx.complex_num(0, 0), cmplx.complex_num(5, 10), cmplx.complex_num(10, 20), cmplx.complex_num(2, -1)]
+        vec2 = [cmplx.complex_num(2, 2), cmplx.complex_num(5, 10), cmplx.complex_num(1, 2), cmplx.complex_num(2, -1)]
+        expected = [cmplx.complex_num(-2, -2), cmplx.complex_num(0, 0), cmplx.complex_num(9, 18), cmplx.complex_num(0, -2)]
+        actual = anlyz.get_signal_difference(vec1, vec2)
+        for i in range(0, len(actual)):
+            print(actual[i], expected[i], vec1[i], vec2[i])
+            assert actual[i] == expected[i], "test_get_signal_difference_1"
+
 if __name__ == "__main__":
     unittest.main()
