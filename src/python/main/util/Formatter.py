@@ -1,6 +1,5 @@
-import os, sys
-sys.path.insert(0, os.path.abspath(".."))
-import python.main.math.complex_num as cmplx
+from src.python.main.math.ComplexNum import ComplexNum
+
 
 def vec_to_mat(vec, cols):
     mat = []
@@ -10,12 +9,13 @@ def vec_to_mat(vec, cols):
     for i in range(0, num_rows):
         mat.append([])
         for j in range(0, cols):
-            if (cur_element < length):
+            if cur_element < length:
                 mat[i].append(vec[cur_element])
             else:
                 mat[i].append(0)
             cur_element += 1
     return mat
+
 
 def string_to_complex_num(num):
     parts = num.split("+")
@@ -23,4 +23,4 @@ def string_to_complex_num(num):
     imag = parts[1].lstrip()
     imag = imag.replace("i", "")
     imag = float(imag)
-    return cmplx.complex_num(real, imag)
+    return ComplexNum(real, imag)

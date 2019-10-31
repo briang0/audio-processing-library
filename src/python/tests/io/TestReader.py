@@ -1,8 +1,8 @@
 import os
 import unittest
 
-from src.python.main.io import writer, reader
-from src.python.main.util import random_util
+from src.python.main.io import Writer, Reader
+from src.python.main.util import RandomUtil
 
 
 class TestFormat(unittest.TestCase):
@@ -14,9 +14,9 @@ class TestFormat(unittest.TestCase):
         cols = 64
         expected = []
         for i in range(0, rows):
-            expected.append(random_util.get_random_complex_vec(cols, -100000, 100000))
-        writer.write_cmplx_matrix_to_csv(expected, path)
-        actual = reader.read_cmplx_matrix_from_csv(path)
+            expected.append(RandomUtil.get_random_complex_vec(cols, -100000, 100000))
+        Writer.write_cmplx_matrix_to_csv(expected, path)
+        actual = Reader.read_cmplx_matrix_from_csv(path)
         assert os.path.isfile(path) == True, "File was not created"
         assert len(expected) == len(actual) == rows, "Row length mismatch"
         for i in range(0, rows):

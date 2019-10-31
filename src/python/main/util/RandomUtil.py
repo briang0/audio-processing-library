@@ -1,7 +1,7 @@
-import os, sys
-sys.path.insert(0, os.path.abspath("../../.."))
-import python.main.math.complex_num as cmplx
 import random
+
+from src.python.main.math import ComplexNum
+
 
 def get_random_complex_vec(n, low, high):
     output = []
@@ -10,7 +10,8 @@ def get_random_complex_vec(n, low, high):
 
     return output
 
+
 def get_random_complex(low, high):
     r1 = float(random.randint(low, high))
     r2 = float(random.randint(low, high))
-    return cmplx.complex_num(r1, r2)
+    return ComplexNum.ComplexNum(r1, r2)

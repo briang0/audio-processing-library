@@ -1,10 +1,8 @@
-import os, sys
-sys.path.insert(0, os.path.abspath(".."))
-import python.main.math.complex_num as cmplx
-import python.main.util.format as fmt
+from src.python.main.util import Formatter
 
-def read_cmplx_matrix_from_csv(outputDir):
-    f = open(outputDir)
+
+def read_cmplx_matrix_from_csv(output_dir):
+    f = open(output_dir)
     data = f.read()
     rows = data.split("\n")
     output = []
@@ -14,7 +12,7 @@ def read_cmplx_matrix_from_csv(outputDir):
         output.append([])
         for j in range(0, len(elems) - 1):
             cmplx_str = elems[j]
-            num = fmt.string_to_complex_num(cmplx_str)
+            num = Formatter.string_to_complex_num(cmplx_str)
             output[i].append(num)
     f.close()
     return output

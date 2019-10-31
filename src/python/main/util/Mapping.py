@@ -1,9 +1,9 @@
-import os, sys
-sys.path.insert(0, os.path.abspath(".."))
-import python.main.math.complex_num as cmplx
+from src.python.main.math import ComplexNum
+
 
 def real_to_cmplx_obj_vec(vec):
-  return list(map(cmplx.complex_num, vec))
+    return list(map(ComplexNum.ComplexNum, vec))
+
 
 def real_to_cmplx_obj_mat(mat):
     out = []
