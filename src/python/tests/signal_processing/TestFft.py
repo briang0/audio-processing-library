@@ -7,17 +7,17 @@ import unittest
 class FftTest(unittest.TestCase):
 
     def test_fft_1(self):
-        expected = [ComplexNum(3, 0), ComplexNum(-1, 0)]
-        num1 = ComplexNum(1, 0)
-        num2 = ComplexNum(2, 0)
+        expected = [ComplexNum.ComplexNum(3, 0), ComplexNum.ComplexNum(-1, 0)]
+        num1 = ComplexNum.ComplexNum(1, 0)
+        num2 = ComplexNum.ComplexNum(2, 0)
         actual = Fft.fft([num1, num2])
         self.assertEqual(expected, actual)
 
     def test_fft_2(self):
-        expected = [ComplexNum(6, 0), ComplexNum(-2, -2), ComplexNum(2, 0), ComplexNum(-2, 2)]
-        num1 = ComplexNum(1, 0)
-        num2 = ComplexNum(2, 0)
-        num3 = ComplexNum(3, 0)
+        expected = [ComplexNum.ComplexNum(6, 0), ComplexNum.ComplexNum(-2, -2), ComplexNum.ComplexNum(2, 0), ComplexNum.ComplexNum(-2, 2)]
+        num1 = ComplexNum.ComplexNum(1, 0)
+        num2 = ComplexNum.ComplexNum(2, 0)
+        num3 = ComplexNum.ComplexNum(3, 0)
         actual = Fft.fft([num1, num2, num3])
         for i in range(0, len(actual)):
             actual[i] = actual[i].round()
@@ -25,9 +25,9 @@ class FftTest(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_ifft_1(self):
-        expected = [ComplexNum(1, 0), ComplexNum(2, 0)]
-        num1 = ComplexNum(1, 0)
-        num2 = ComplexNum(2, 0)
+        expected = [ComplexNum.ComplexNum(1, 0), ComplexNum.ComplexNum(2, 0)]
+        num1 = ComplexNum.ComplexNum(1, 0)
+        num2 = ComplexNum.ComplexNum(2, 0)
         actual = Fft.fft([num1, num2])
         actual = Fft.ifft(actual)
         self.assertEqual(expected, actual)

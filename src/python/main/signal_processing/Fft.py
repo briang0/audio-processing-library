@@ -11,7 +11,7 @@ def fft(vec):
     if not MathUtil.is_power_of_2(n):
         next_pow = MathUtil.next_power_of_2(n)
         zeros = next_pow - n
-        pad = [ComplexNum(0, 0)] * zeros
+        pad = [ComplexNum.ComplexNum(0, 0)] * zeros
         print(zeros)
         vec.extend(pad)
 
@@ -37,7 +37,7 @@ def fft_cmplx(vec):
     fft_odds = fft(fft_odds)
 
     for k in range(0, n // 2):
-        exp = ComplexNum(np.cos(-2 * np.pi * k / n), np.sin(-2 * np.pi * k / n))
+        exp = ComplexNum.ComplexNum(np.cos(-2 * np.pi * k / n), np.sin(-2 * np.pi * k / n))
         product = exp.mult(fft_odds[k])
         output[k] = (fft_evens[k].add(product))
         output[k + n // 2] = (fft_evens[k].sub(product))

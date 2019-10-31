@@ -12,10 +12,10 @@ VEC_1 = [1, 2, 83, 4, 7, 7, 7, 9]
 class AnalyzationTest(unittest.TestCase):
 
     def test_get_sum_of_cmplx_comp_squares(self):
-        num1 = ComplexNum(2, 2)
-        num2 = ComplexNum(-2, 2)
-        num3 = ComplexNum(0, 1)
-        num4 = ComplexNum(1, 0)
+        num1 = ComplexNum.ComplexNum(2, 2)
+        num2 = ComplexNum.ComplexNum(-2, 2)
+        num3 = ComplexNum.ComplexNum(0, 1)
+        num4 = ComplexNum.ComplexNum(1, 0)
         expected1 = 8
         expected2 = 8
         expected3 = 1
@@ -31,10 +31,10 @@ class AnalyzationTest(unittest.TestCase):
         self.assertEqual(expected4, actual4)
 
     def test_magnitude(self):
-        num1 = ComplexNum(2, 2)
-        num2 = ComplexNum(-2, 2)
-        num3 = ComplexNum(0, 1)
-        num4 = ComplexNum(4, 4)
+        num1 = ComplexNum.ComplexNum(2, 2)
+        num2 = ComplexNum.ComplexNum(-2, 2)
+        num3 = ComplexNum.ComplexNum(0, 1)
+        num4 = ComplexNum.ComplexNum(4, 4)
         expected1 = 3
         expected2 = 3
         expected3 = 1
@@ -51,13 +51,13 @@ class AnalyzationTest(unittest.TestCase):
 
     def test_intensity_1(self):
         expected = 180
-        signal = ComplexNum(32768, 0)
+        signal = ComplexNum.ComplexNum(32768, 0)
         actual = np.floor(Analyzation.get_intensity(signal))
         self.assertEqual(expected, actual)
 
     def test_intensity_2(self):
         expected = 0
-        signal = ComplexNum(1, 0)
+        signal = ComplexNum.ComplexNum(1, 0)
         actual = np.floor(Analyzation.get_intensity(signal))
         self.assertEqual(expected, actual)
 
@@ -84,25 +84,25 @@ class AnalyzationTest(unittest.TestCase):
 
     def test_get_max_intensity_cmplx_vec_1(self):
         vec = [1, 2, 3, 2, 2, 3, 5, 4]
-        expected = Analyzation.get_intensity(ComplexNum(5, 0))
+        expected = Analyzation.get_intensity(ComplexNum.ComplexNum(5, 0))
         actual = Analyzation.get_max_intensity_cmplx_vec(vec)
         self.assertEqual(expected, actual)
 
     def test_get_max_intensity_cmplx_vec_2(self):
         vec = [0, 0, 0, 0, 0, 0, 0, 0]
-        expected = Analyzation.get_intensity(ComplexNum(0, 0))
+        expected = Analyzation.get_intensity(ComplexNum.ComplexNum(0, 0))
         actual = Analyzation.get_max_intensity_cmplx_vec(vec)
         self.assertEqual(expected, actual)
 
     def test_get_min_intensity_cmplx_vec_1(self):
         vec = [1, 2, 3, 2, 2, 3, 5, 4]
-        expected = Analyzation.get_intensity(ComplexNum(1, 0))
+        expected = Analyzation.get_intensity(ComplexNum.ComplexNum(1, 0))
         actual = Analyzation.get_min_intensity_cmplx_vec(vec)
         self.assertEqual(expected, actual)
 
     def test_get_min_intensity_cmplx_vec_2(self):
         vec = [0, 0, 0, 0, 0, 0, 0, 0]
-        expected = Analyzation.get_intensity(ComplexNum(0, 0))
+        expected = Analyzation.get_intensity(ComplexNum.ComplexNum(0, 0))
         actual = Analyzation.get_min_intensity_cmplx_vec(vec)
         self.assertEqual(expected, actual)
 
@@ -141,7 +141,7 @@ class AnalyzationTest(unittest.TestCase):
         vec2 = [7, 8, 17, 22]
         cmplx_vec1 = Mapping.real_to_cmplx_obj_vec(vec1)
         cmplx_vec2 = Mapping.real_to_cmplx_obj_vec(vec2)
-        tolerance = Analyzation.get_intensity(ComplexNum(2, 0)) / 2
+        tolerance = Analyzation.get_intensity(ComplexNum.ComplexNum(2, 0)) / 2
         expected = 1.0
         actual = Analyzation.get_signal_intensity_similarity(cmplx_vec1, cmplx_vec2, tolerance)
         self.assertEqual(expected, actual)
@@ -151,7 +151,7 @@ class AnalyzationTest(unittest.TestCase):
         vec2 = [7, 8, 17, 22]
         cmplx_vec1 = Mapping.real_to_cmplx_obj_vec(vec1)
         cmplx_vec2 = Mapping.real_to_cmplx_obj_vec(vec2)
-        tolerance = Analyzation.get_intensity(ComplexNum(2, 0)) / 2
+        tolerance = Analyzation.get_intensity(ComplexNum.ComplexNum(2, 0)) / 2
         raised = None
         try:
             Analyzation.get_signal_intensity_similarity(cmplx_vec1, cmplx_vec2, tolerance)
@@ -212,9 +212,9 @@ class AnalyzationTest(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_get_signal_difference_1(self):
-        vec1 = [ComplexNum(0, 0), ComplexNum(5, 10), ComplexNum(10, 20), ComplexNum(2, -1)]
-        vec2 = [ComplexNum(2, 2), ComplexNum(5, 10), ComplexNum(1, 2), ComplexNum(2, -1)]
-        expected = [ComplexNum(-2, -2), ComplexNum(0, 0), ComplexNum(9, 18), ComplexNum(0, -2)]
+        vec1 = [ComplexNum.ComplexNum(0, 0), ComplexNum.ComplexNum(5, 10), ComplexNum.ComplexNum(10, 20), ComplexNum.ComplexNum(2, -1)]
+        vec2 = [ComplexNum.ComplexNum(2, 2), ComplexNum.ComplexNum(5, 10), ComplexNum.ComplexNum(1, 2), ComplexNum.ComplexNum(2, -1)]
+        expected = [ComplexNum.ComplexNum(-2, -2), ComplexNum.ComplexNum(0, 0), ComplexNum.ComplexNum(9, 18), ComplexNum.ComplexNum(0, -2)]
         actual = Analyzation.get_signal_difference(vec1, vec2)
         for i in range(0, len(actual)):
             print(actual[i], expected[i], vec1[i], vec2[i])

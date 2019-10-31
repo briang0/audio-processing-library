@@ -23,4 +23,4 @@ def string_to_complex_num(num):
     imag = parts[1].lstrip()
     imag = imag.replace("i", "")
     imag = float(imag)
-    return ComplexNum(real, imag)
+    return ComplexNum.ComplexNum(real, imag)
