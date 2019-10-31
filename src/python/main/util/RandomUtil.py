@@ -14,4 +14,4 @@ def get_random_complex_vec(n, low, high):
 def get_random_complex(low, high):
     r1 = float(random.randint(low, high))
     r2 = float(random.randint(low, high))
-    return ComplexNum.ComplexNum(r1, r2)
+    return ComplexNum(r1, r2)
