@@ -214,10 +214,9 @@ class AnalyzationTest(unittest.TestCase):
     def test_get_signal_difference_1(self):
         vec1 = [ComplexNum(0, 0), ComplexNum(5, 10), ComplexNum(10, 20), ComplexNum(2, -1)]
         vec2 = [ComplexNum(2, 2), ComplexNum(5, 10), ComplexNum(1, 2), ComplexNum(2, -1)]
-        expected = [ComplexNum(-2, -2), ComplexNum(0, 0), ComplexNum(9, 18), ComplexNum(0, -2)]
+        expected = [ComplexNum(-2, -2), ComplexNum(0, 0), ComplexNum(9, 18), ComplexNum(0, 0)]
         actual = Analyzation.get_signal_difference(vec1, vec2)
         for i in range(0, len(actual)):
-            print(actual[i], expected[i], vec1[i], vec2[i])
             self.assertEqual(actual[i], expected[i])
 
 

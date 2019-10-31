@@ -1,6 +1,6 @@
 import random
 
-from src.python.main.math import ComplexNum
+from src.python.main.math.ComplexNum import ComplexNum
 
 
 def get_random_complex_vec(n, low, high):

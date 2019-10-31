@@ -61,7 +61,7 @@ class ComplexNumTests(unittest.TestCase):
     def test_abs(self):
         expected = [13, 2]
         num = ComplexNum(-13, -2)
-        num = num.abs(num)
+        num = num.abs()
         actual = [num.real, num.imag]
         self.assertEqual(expected, actual)
 

@@ -1,5 +1,6 @@
 import numpy as np
 
+from src.python.main.math.ComplexNum import ComplexNum
 from src.python.main.util.Exceptions import VectorLengthMismatchException
 
 max16bit = 32768
@@ -108,9 +109,9 @@ def get_signal_difference(signal1, signal2):
     if len1 is not len2:
         return None
         # TODO throw an excpetion
-    output = []
-    for i in range(0, len1):
-        output.append(signal1[i].sub(signal2[i]))
+    output = [ComplexNum(0, 0)] * len1
+    for i in range(0, len(output)):
+        output[i] = signal1[i].sub(signal2[i])
     return output
 
 

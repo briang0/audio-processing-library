@@ -3,15 +3,15 @@ class ComplexNum:
     imag = 0.0
 
     def __init__(self, real, complex_part=None):
-        self.real = real
+        self.real = float(real)
         if complex_part is None:
-            self.imag = 0
+            self.imag = float(0.0)
         else:
-            self.imag = complex_part
+            self.imag = float(complex_part)
 
     def __call__(self, real_val):
-        self.real = real_val
-        self.imag = 0
+        self.real = float(real_val)
+        self.imag = float(0.0)
 
     def add(self, c):
         real1 = self.real + c.real
@@ -20,8 +20,8 @@ class ComplexNum:
 
     def sub(self, c):
         real1 = self.real - c.real
-        imag1 = self.imag - c.imag
-        return ComplexNum(real1, imag1)
+        imag14 = self.imag - c.imag
+        return ComplexNum(real1, imag14)
 
     def mult(self, c):
         real1 = self.real * c.real - self.imag * c.imag
