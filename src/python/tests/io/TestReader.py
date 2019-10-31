@@ -1,23 +1,20 @@
-import os, sys
-sys.path.insert(0, os.path.abspath("../../.."))
-import python.main.math.complex_num as cmplx
-import python.main.util.format as fmt
-import python.main.util.random_util as ru
-import python.main.io.writer as writer
-import python.main.io.reader as reader
+import os
 import unittest
 
-class test_format(unittest.TestCase):
+from src.python.main.io import writer, reader
+from src.python.main.util import random_util
+
+
+class TestFormat(unittest.TestCase):
 
     def test_write_csv_1(self):
-        zero = cmplx.complex_num(0.0,0.0)
-        dir = "../../../../resources"
-        path = dir + ("/test_write_csv_1.csv")
+        resource_directory = "../../../../resources"
+        path = resource_directory + "/test_write_csv_1.csv"
         rows = 32
         cols = 64
         expected = []
-        for i in range (0, rows):
-            expected.append(ru.get_random_complex_vec(cols, -100000, 100000))
+        for i in range(0, rows):
+            expected.append(random_util.get_random_complex_vec(cols, -100000, 100000))
         writer.write_cmplx_matrix_to_csv(expected, path)
         actual = reader.read_cmplx_matrix_from_csv(path)
         assert os.path.isfile(path) == True, "File was not created"
@@ -29,8 +26,7 @@ class test_format(unittest.TestCase):
                 assert exp == act, "Actual data does not match expected"
             assert len(expected[i]) == len(actual[i]), "Column length mismatch"
         os.remove(path)
-        assert os.path.isfile(path) == False, "File was not deleted"
-
+        assert os.path.isfile(path) is False, "File was not deleted"
 
 
 if __name__ == "__main__":
