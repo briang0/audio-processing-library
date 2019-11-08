@@ -18,13 +18,13 @@ def get_magnitude(complex_number):
 
 def get_intensity(complex_number):
     val = get_sum_of_cmplx_comp_squares(complex_number)
-    intensity = 20 * np.log10(val)
+    intensity = 20 * np.log10(np.abs(val))
     return np.abs(intensity)
 
 
 def bin_to_hz(frequency_bin, fft_size, sample_rate):
     step = sample_rate / fft_size
-    return np.round(frequency_bin * step)
+    return np.floor(frequency_bin * step)
 
 
 def get_max_intensity_cmplx_vec(vec):

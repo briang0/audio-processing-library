@@ -1,38 +1,32 @@
 #This class is for testing. It won't be a part of the api
+import numpy as np
+import cv2
+from src.python.main.graphing import Spectrogram
+from src.python.main.io import Reader, AudioReader
+from src.python.main.signal_processing import Fft
+from src.python.main.signal_processing.Windowing import hanning
+from src.python.main.util import Mapping, Formatter
 
-import os, sys
-sys.path.insert(0, os.path.abspath("../../.."))
-import python.main.io.audio_reader as read
-import python.main.signal_processing.fft as fft
-import python.main.signal_processing.analyzation as anlyz
-import python.main.util.format as fmt
-import python.main.util.mapping as mapping
-
-path = "C:/Users/brian/Documents/Smasheo/Audio/King Dedede Sounds/dededehit.wav"
+path = "../../../../resources/515.wav"
 
 # fft_size = 128
-#
-# data = read.wav_to_vec(path)
-#
-# mat = fmt.vec_to_mat(data, fft_size)
-#
-# cmplx_mat = mapping.real_to_cmplx_obj_mat(mat)
-#
-# fft_mat = fft.fft_mat(cmplx_mat)
-#
+
+samples, sample_width = AudioReader.wav_to_vec(path)
+sample_rate = 44100
+print("Done reading")
+num_samples = len(samples)
+print(num_samples, "samples at ", sample_rate, " Hz")
+complex_samples = Mapping.real_to_cmplx_obj_vec(samples)
+fft_size = 128
+overlap = fft_size // 2
+fft_matrix = Fft.short_time_fft(complex_samples, fft_size, overlap)
+print(np.array(fft_matrix).shape)
+print("Done transforming")
+spectrogram = Spectrogram.plot_spectrogram(fft_matrix, 1000, 500, fft_size)
+cv2.imshow("Spectrogram", spectrogram)
+while 1:
+    cv2.waitKey(500)
+
 # for row in fft_mat:
 #     print(anlyz.get_signal_magnitude_similarity(row, row, 1.0))
 
-dat = [1, 2, 3, 4, 5, 6, 7, 8]
-
-dat_cmplx = mapping.real_to_cmplx_obj_vec(dat)
-
-for num in dat_cmplx:
-    print(num)
-
-dat_fft = fft.fft(dat_cmplx)
-
-for num in dat_fft:
-    print(num)
-
-# transform = fft.fft(data, 256)
